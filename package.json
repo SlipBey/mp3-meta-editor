@@ -1,0 +1,26 @@
+{
+  "name": "mp3-meta-editor",
+  "version": "1.1.0",
+  "description": "Interactive TypeScript CLI to edit MP3 metadata (asks in console).",
+  "main": "dist/interactive.js",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "node dist/interactive.js",
+    "dev": "ts-node src/interactive.ts"
+  },
+  "keywords": [],
+  "author": "SlipBey",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "music-metadata": "^11.0.0",
+    "node-id3": "^0.2.6",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "@types/prompts": "^2.4.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
