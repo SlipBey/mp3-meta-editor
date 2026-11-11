@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import prompts from "prompts";
 import { readMetadata, writeTags, TagInput } from "./tagger";
-import NodeID3 from "node-id3";
 
 function norm(v: unknown): string {
     if (v == null) return "";
@@ -107,11 +106,8 @@ async function main() {
         process.exit(0);
     }
 
-    const ok = writeTags(file, payload);
+    const ok = await writeTags(file, payload);
     console.log(ok ? "✅ Meta veriler güncellendi." : "❌ Yazım başarısız.");
-
-    const raw = NodeID3.read(file);
-    console.log("\n🧾 ID3 (node-id3) raw yorum:", raw.comment);
 
     try {
         const after = await readMetadata(file);

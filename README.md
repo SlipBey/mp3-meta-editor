@@ -18,7 +18,7 @@ This project was built with love for developers who like to keep their tools min
   - Genre  
   - Comment (with language and descriptor support)  
 - 💾 Preserves existing data — just press **Enter** to keep the current value  
-- ⚙️ Uses `music-metadata` for reading and `node-id3` for writing  
+- ⚙️ Uses [`music-metadata`](https://github.com/Borewit/music-metadata) for reading and writing
 - 🧩 Built entirely in **TypeScript**, ready for future expansion
 
 ---
@@ -79,7 +79,7 @@ You’ll be guided step-by-step in the terminal to select your MP3 file and edit
 | Layer | Library |
 |-------|----------|
 | Metadata Reader | [`music-metadata`](https://www.npmjs.com/package/music-metadata) |
-| Metadata Writer | [`node-id3`](https://www.npmjs.com/package/node-id3) |
+| Metadata Writer | [`music-metadata`](https://www.npmjs.com/package/music-metadata) |
 | CLI Prompts | [`prompts`](https://www.npmjs.com/package/prompts) |
 | Language | TypeScript |
 | Runtime | Node.js |
@@ -131,3 +131,13 @@ Feel free to use, modify, and distribute with attribution.
 ---
 
 > _"For those who love clean code and good music."_ 🎶
+
+### Local editor integration
+
+Requires Node.js 22 or newer. The reader and writer both use [`music-metadata`](https://github.com/Borewit/music-metadata) ^12.4.0. No local editor checkout or sibling package is needed; `music-metadata` handles both reading and writing directly.
+
+Writes are awaited before reporting success or reading the updated metadata.
+New tags use ID3v2.4; existing supported v2.4 fields are preserved. Legacy
+ID3v2.2/v2.3 updates fail without replacing the original file, rather than
+discarding unedited fields. Blank CLI answers retain existing fields; they do
+not delete tags. Write failures exit with status 1.
